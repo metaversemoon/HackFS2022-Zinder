@@ -40,47 +40,38 @@ export default function SignUp() {
       </Typography>
       <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
             <TextField
-              autoComplete="given-name"
-              name="firstName"
+              autoComplete="nickname"
+              name="nickName"
               required
               fullWidth
-              id="firstName"
-              label="First Name"
+              id="nickName"
+              label="Nickname"
               autoFocus
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+
+          <Grid item xs={12}>
             <TextField
               required
               fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="family-name"
+              id="profileImage"
+              label="Profile Image"
+              name="profileImage"
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="gender"
+              label="Gender"
+              name="gender"
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="new-password"
-            />
+            <TextField required fullWidth id="age" label="Age" name="age" />
           </Grid>
         </Grid>
         <Button

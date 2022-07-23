@@ -35,14 +35,13 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
+export default function ProfileCard({ address }: { address: string }) {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const address = "0xf6b6f07862a02c85628b3a9688beae07fea9c863";
   return (
     <Card sx={{}}>
       <CardHeader
@@ -56,11 +55,11 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="0xf6b6f07862a02c85628b3a9688beae07fea9c863"
+        title={address}
         subheader="July 22, 2022"
       />
-      {wallet && wallet?.accounts?.find((acc) => acc)?.address}
-      {wallet && wallet?.accounts?.find((acc) => acc)?.ens?.name}
+      {/* {wallet && wallet?.accounts?.find((acc) => acc)?.address}
+      {wallet && wallet?.accounts?.find((acc) => acc)?.ens?.name} */}
       {/* <CardMedia
         component="img"
         height="194"
@@ -68,12 +67,13 @@ export default function RecipeReviewCard() {
         alt="Paella dish"
       /> */}
       <Typography align="center" variant="h2">
-        {(emojiHash as any).getHash("asds")}
+        {(emojiHash as any).getHash(address)}
       </Typography>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          0xf6...63 has made 3304 transactions owns{" "}
-          <NftExplorer address={address} /> NFTs
+          Facts: made {Math.floor(Math.random() * 100) + 70} transactions and
+          owns <NftExplorer address={address} /> NFTs. <br />
+          Read more...
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

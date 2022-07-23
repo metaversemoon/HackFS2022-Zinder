@@ -77,5 +77,5 @@ export const NftExplorer = (props: { address: string }) => {
   //     fetchAllPaginateData(address);
   //   }, [fetchAllPaginateData, address]);
 
-  return <React.Fragment>{accountNFTs?.data?.total}</React.Fragment>;
+  return <React.Fragment>{accountNFTs?.data?.total || 0}</React.Fragment>;
 };

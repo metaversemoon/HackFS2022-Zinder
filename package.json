@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@xmtp/xmtp-js": "^5.1.0"
+  }
+}

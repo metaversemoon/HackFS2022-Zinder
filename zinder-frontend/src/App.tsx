@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { ProfileDetails } from "./components/ProfileDetails";
 import { Container, Box, Typography } from "@mui/material";
-import RecipeReviewCard from "./components/ProfileCard";
+import ProfileCard from "./components/ProfileCard";
 import { NftExplorer } from "./components/CommonNFTs";
 import { Header } from "./components/Header";
 
@@ -42,8 +42,13 @@ const web3Onboard = init({
 });
 
 function App() {
-  const [confetti, setConfetti] = useState(false);
+  const [confetti, setConfetti] = useState(true);
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  const addresses = [
+    "0x0cad7af8b05d0438ffa1a1b73d05676154ae1dca",
+    "0xe626e8ca82603e3b44751f8562b5ed126d345140",
+  ];
+  const address = addresses[Math.floor(Math.random() * 2)];
 
   return (
     <React.Fragment>
@@ -52,7 +57,7 @@ function App() {
       <Header />
       <Container maxWidth="sm">
         <Box sx={{ my: 4 }}>
-          <RecipeReviewCard />
+          <ProfileCard address={address} />
         </Box>
 
         <Box sx={{ my: 4 }}>
@@ -62,7 +67,7 @@ function App() {
               setInterval(() => setConfetti(false), 2500);
             }}
           ></Typography>
-          <ProfileDetails />
+          <ProfileDetails address={address} />
         </Box>
       </Container>
     </React.Fragment>
