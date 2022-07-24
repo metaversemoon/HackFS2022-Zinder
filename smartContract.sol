@@ -27,7 +27,7 @@ contract Zinder {
     }
     
     function getLatestMerkle(address userEOA) public returns (address) {
-        return merkleRoot[userEOA][merkleRoot[userEOA].length-1]
+        return merkleRoot[userEOA][merkleRoot[userEOA].length-1];
     }
 
     function rootBelongsToUser(address userEOA, address merkle)
