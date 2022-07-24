@@ -34,7 +34,13 @@ const convertRows = async (data: any) => {
   return Promise.all(poapData);
 };
 
-export const MutualPoaps = ({ address }: { address: string }) => {
+export const MutualPoaps = ({
+  address,
+  setAddresses,
+}: {
+  address: string;
+  setAddresses: any;
+}) => {
   const endpoint =
     "https://api.thegraph.com/subgraphs/id/QmcPJp1DE3UnZc8ERvw2svtZeeLHiRKidj48BXv2kfpZrb";
   const graphql = new GraphQLClient({ url: endpoint });
@@ -43,9 +49,11 @@ export const MutualPoaps = ({ address }: { address: string }) => {
   useEffect(() => {
     setLoading(true);
     getMutualPoaps("0xe626e8ca82603e3b44751f8562b5ed126d345140", graphql)
-      .then(convertRows)
       .then((data) => {
-        console.log("DATA");
+        setAddresses(data.map((item) => item.addressB));
+        return convertRows(data);
+      })
+      .then((data) => {
         setRows(data);
         setLoading(false);
       });
