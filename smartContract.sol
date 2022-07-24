@@ -6,7 +6,7 @@ contract Zinder {
     mapping(address => uint256) public userId;
     mapping(uint256 => string) public userStreamId;
 
-    mapping(address => address[]) public merkleRoot;
+    mapping(uint256 => address[]) public merkleRoot;
 
     constructor() {
         counter = 0;
@@ -23,21 +23,18 @@ contract Zinder {
     }
 
     function updateMerkle(address merkle) public {
-        merkleRoot[msg.sender].push(merkle);
-    }
-    
-    function getLatestMerkle(address userEOA) public returns (address) {
-        return merkleRoot[userEOA][merkleRoot[userEOA].length-1];
+        uint256 id = userId[msg.sender];
+        merkleRoot[id].push(merkle);
     }
 
-    function rootBelongsToUser(address userEOA, address merkle)
+    function rootBelongsToUser(uint256 id, address merkle)
         public
-        returns (boolean)
+        returns (bool)
     {
         uint i;
-        uint len = merkleRoot[userEOA].length;
+        uint len = merkleRoot[id].length;
         for (i = 0; i < len; i++) {
-            if (merkleRoot[userEOA][i] == merkle) {
+            if (merkleRoot[id][i] == merkle) {
                 return true;
             }
         }
