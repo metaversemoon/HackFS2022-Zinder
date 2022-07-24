@@ -2,31 +2,24 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Link,
   Button,
   Backdrop,
   Box,
   Fade,
   Modal,
-  styled,
-  Skeleton,
   Dialog,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { TransitionProps } from "@mui/material/transitions";
 import Slide from "@mui/material/Slide";
+import { ExampleChatService } from "@chatscope/use-chat/dist/examples";
 
 import React, { useState } from "react";
 import SignUp from "./SignUp";
 import { useConnectWallet, useSetChain, useWallets } from "@web3-onboard/react";
 import { ethers } from "ethers";
 import IconButton from "@mui/material/IconButton";
+import { Inbox } from "./Inbox";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -65,11 +58,6 @@ export const Header = () => {
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    console.log("NEW");
-    setDrawerOpen(newOpen);
-  };
-
   return (
     <React.Fragment>
       <AppBar position="static" color="transparent" elevation={1}>
@@ -79,7 +67,7 @@ export const Header = () => {
           </Typography>
           <nav>
             <IconButton aria-label="messages">
-              <MarkunreadIcon height={30} onClick={toggleDrawer(true)} />
+              <MarkunreadIcon height={30} onClick={() => setDrawerOpen(true)} />
             </IconButton>
           </nav>
           <Button
@@ -129,43 +117,7 @@ export const Header = () => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative" }}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={toggleDrawer(false)}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Chats
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText
-              primary="0x940f2dCdd20232377BcD522b9562BB533eED9E53"
-              secondary="New Match with Beary"
-            />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary="0xaE87c8148C417445f4AF84008cd6c50a67bc5CBB"
-              secondary="That's my favorite festival too"
-            />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary="0x86c8B2ba94D23603178B78b6521B655c1A123b09"
-              secondary="I love the Patrizio POAP"
-            />
-          </ListItem>
-        </List>
+        <Inbox setDrawerOpen={setDrawerOpen} />
       </Dialog>
     </React.Fragment>
   );

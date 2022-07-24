@@ -35,7 +35,15 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function ProfileCard({ address }: { address: string }) {
+export default function ProfileCard({
+  address,
+  like,
+  dislike,
+}: {
+  address: string;
+  like: (address: string) => void;
+  dislike: (address: string) => void;
+}) {
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
   const [expanded, setExpanded] = useState(false);
 
@@ -78,10 +86,10 @@ export default function ProfileCard({ address }: { address: string }) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="cross">
-          <CloseIcon />
+          <CloseIcon onClick={() => dislike(address)} />
         </IconButton>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon onClick={() => like(address)} />
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -92,7 +100,7 @@ export default function ProfileCard({ address }: { address: string }) {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
@@ -122,7 +130,7 @@ export default function ProfileCard({ address }: { address: string }) {
             serve.
           </Typography>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 }

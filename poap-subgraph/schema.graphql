@@ -42,6 +42,6 @@ type MutualEvent @entity {
   id: ID!
   ownerA: Account!
   ownerB: Account!
-  events: [Event!]!
+  events: [Event!]! @derivedFrom(field: "event")
   mutualEventsCount: BigInt!
 }
