@@ -15,7 +15,7 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       return (
         <React.Fragment>
-          <img height="100%" src={params?.value} />
+          <img height="90%" src={params?.value} />
         </React.Fragment>
       );
     },

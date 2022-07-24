@@ -63,7 +63,7 @@ export const Header = () => {
       <AppBar position="static" color="transparent" elevation={1}>
         <Toolbar sx={{ flexWrap: "wrap", height: 10 }}>
           <Typography variant="h5" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Zinder
+            🐿️ Zinder
           </Typography>
           <nav>
             <IconButton aria-label="messages">
