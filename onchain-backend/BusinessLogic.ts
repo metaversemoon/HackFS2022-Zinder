@@ -10,13 +10,13 @@ interface WalletsAndPublicKeys {
   publicKeys: string[];
 }
 
-interface userContactMsg {
+interface IUserContactMsg {
   privateXmtpAdr: string;
   idx: number;
 }
 
 
-interface publicUser {
+interface IPublicUser {
   smartContractAddress: string,
   eoa: string,
   XMTP_MSGBOX: string,
@@ -30,7 +30,7 @@ interface publicUser {
   privateUserDataStreamAddress: string
 }
 
-interface privateData {
+interface IPrivateData {
   masterSeed: string,
   eoa: string,
   wallets: Wallet[],
@@ -65,7 +65,7 @@ export default class BusinessLogic {
   XMTP_MSGBOX!: Client;
 
   swipedUsers = new Map<number, boolean>();
-  userThatSwipedUs = new Map<number, userContactMsg>();
+  userThatSwipedUs = new Map<number, IUserContactMsg>();
 
   zinderContract!: any;
 
