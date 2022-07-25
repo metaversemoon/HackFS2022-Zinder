@@ -1,5 +1,6 @@
 # HackFS2022-Submission: Zinder find your POAP partner
 
+
 This project uses POAPs smart contracts and APIs for the initial user data.
 
 You can connect your wallet with metamask and sign up to create a profile stored encrypted on IPFS.
@@ -15,3 +16,6 @@ User1 sends a message to LitAction alongside a merkle tree root proof and anothe
 User2 sends a message to LitAction alongside a merkle tree root proof and an address of user1 global xmtp client and another address used for the and an address of user1 global xmtp client
 User1 sends a message with a different key+the root proof to Address2 of User2 with a Merkle Proof Private Communication Begins
 private communication user1 Address2 <-> user2 Address2
+
+
+![screenshot](./Slides/zinder-frontend.png?raw=true)
