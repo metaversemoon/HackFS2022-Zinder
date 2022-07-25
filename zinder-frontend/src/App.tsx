@@ -107,7 +107,7 @@ function App() {
             Made possible with:
           </Typography>
           <div>
-            <img width="100%" src="/sponsors.jpg" />
+            <img width="100%" src="./sponsors.jpg" />
           </div>
         </Box>
       </Container>

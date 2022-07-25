@@ -1,6 +1,7 @@
 {
   "name": "frontend-app",
   "version": "0.1.0",
+  "homepage": "https://franz101.github.io/zinder-frontend/",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.18.9",
